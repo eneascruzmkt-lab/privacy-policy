@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuAds - Gerenciador de Anuncios Meta Ads</title>
+    <meta name="description" content="Crie, gerencie e escale campanhas no Meta Ads com seguranca e controle total.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0b10; color: #e0e0e0; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+        .logo { width: 88px; height: 88px; margin-bottom: 32px; filter: drop-shadow(0 0 30px rgba(99,102,241,0.4)); }
+        .hero h1 { font-size: clamp(40px, 7vw, 64px); font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -1px; }
+        .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero .subtitle { font-size: clamp(16px, 2.5vw, 20px); color: #888; max-width: 560px; line-height: 1.6; margin-bottom: 40px; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+        .btn-primary { background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff; box-shadow: 0 4px 20px rgba(99,102,241,0.3); }
+        .btn-primary:hover { box-shadow: 0 6px 30px rgba(99,102,241,0.5); transform: translateY(-2px); }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #ccc; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .features { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+        .features h2 { text-align: center; font-size: 32px; color: #fff; margin-bottom: 12px; }
+        .features .section-desc { text-align: center; color: #888; font-size: 16px; margin-bottom: 48px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .feature-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 32px; transition: all 0.3s; }
+        .feature-card:hover { border-color: rgba(99,102,241,0.3); background: rgba(99,102,241,0.04); transform: translateY(-4px); }
+        .feature-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+        .feature-card h3 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: #999; line-height: 1.6; }
+        .how-it-works { padding: 80px 24px; max-width: 800px; margin: 0 auto; }
+        .how-it-works h2 { text-align: center; font-size: 32px; color: #fff; margin-bottom: 48px; }
+        .steps { display: flex; flex-direction: column; gap: 32px; }
+        .step { display: flex; gap: 20px; align-items: flex-start; }
+        .step-number { width: 40px; height: 40px; min-width: 40px; border-radius: 12px; background: linear-gradient(135deg, #4f46e5, #6366f1); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: #fff; }
+        .step h3 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+        .step p { font-size: 14px; color: #999; line-height: 1.5; }
+        .tech { padding: 60px 24px; text-align: center; }
+        .tech h2 { font-size: 24px; color: #fff; margin-bottom: 4px; }
+        .tech .section-desc { color: #888; font-size: 14px; }
+        .tech-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        .badge { padding: 8px 16px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: #aaa; font-weight: 500; }
+        footer { padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
+        footer p { font-size: 13px; color: #555; margin-bottom: 12px; }
+        footer a { color: #6366f1; text-decoration: none; margin: 0 8px; font-size: 13px; }
+        footer a:hover { color: #a78bfa; }
+        @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <svg class="logo" width="88" height="88" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="bg" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#4F46E5"/><stop offset="0.5" stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs>
+            <rect width="120" height="120" rx="26" fill="url(#bg)"/>
+            <rect x="1" y="1" width="118" height="118" rx="25" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+            <rect x="28" y="58" width="16" height="32" rx="5" fill="rgba(255,255,255,0.7)"/>
+            <rect x="52" y="40" width="16" height="50" rx="5" fill="rgba(255,255,255,0.85)"/>
+            <rect x="76" y="30" width="16" height="60" rx="5" fill="rgba(255,255,255,0.7)"/>
+            <path d="M84 26L88 20L92 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+        </svg>
+        <h1>Seus anuncios,<br><span>seu controle.</span></h1>
+        <p class="subtitle">Crie, gerencie e escale campanhas no Meta Ads com interface moderna, protecao anti-ban e automacao inteligente. Tudo rodando local.</p>
+        <div class="hero-buttons">
+            <a href="https://github.com/eneascruzmkt-lab/euads" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Ver no GitHub
+            </a>
+            <a href="#features" class="btn btn-secondary">Conhecer recursos</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Recursos</h2>
+        <p class="section-desc">Tudo que voce precisa para gerenciar anuncios com eficiencia</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">&#9889;</span>
+                <h3>Criacao rapida de campanhas</h3>
+                <p>Wizard intuitivo com 3 abas: Campanha, Conjuntos e Anuncios. Crie campanhas completas em minutos com preview em tempo real.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">&#128737;</span>
+                <h3>Protecao anti-ban</h3>
+                <p>Limites de seguranca hardcoded que previnem configuracoes arriscadas. Posicionamentos seguros e restricoes de criativo aplicados automaticamente.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">&#128200;</span>
+                <h3>Escalar campanhas</h3>
+                <p>Duplique e escale campanhas existentes com novos conjuntos de anuncios. Distribua paginas automaticamente para evitar deteccao.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">&#128197;</span>
+                <h3>Agendamento inteligente</h3>
+                <p>Agende campanhas para publicacao automatica. Defina data, hora e deixe o sistema cuidar do resto.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">&#127970;</span>
+                <h3>Multi-empresa</h3>
+                <p>Gerencie multiplas empresas com tokens, paginas e contas de anuncio independentes. Alterne entre elas com um clique.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">&#128209;</span>
+                <h3>Templates de nome</h3>
+                <p>Padronize nomes de campanha com placeholders dinamicos. Mantenha organizacao e consistencia em todas as contas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>Como funciona</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div><h3>Configure sua conta</h3><p>Adicione seu token do Meta, selecione as contas de anuncio e paginas que deseja gerenciar.</p></div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div><h3>Crie sua campanha</h3><p>Use o wizard para definir objetivo, orcamento, segmentacao e criativos. O sistema aplica protecoes automaticamente.</p></div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div><h3>Publique ou agende</h3><p>Crie imediatamente na Meta ou agende para publicacao automatica na data e hora desejadas.</p></div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div><h3>Escale seus resultados</h3><p>Use o recurso de escalar para duplicar campanhas que estao performando bem com novos conjuntos.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech">
+        <h2>Construido com</h2>
+        <p class="section-desc">Stack moderna e leve, 100% local</p>
+        <div class="tech-badges">
+            <span class="badge">Python</span>
+            <span class="badge">FastAPI</span>
+            <span class="badge">Meta Graph API</span>
+            <span class="badge">Vanilla JS</span>
+            <span class="badge">CSS3</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>EuAds &copy; 2026. Todos os direitos reservados.</p>
+        <div>
+            <a href="index.html">Politica de Privacidade</a>
+            <a href="terms.html">Termos de Servico</a>
+            <a href="data-deletion.html">Exclusao de Dados</a>
+            <a href="https://github.com/eneascruzmkt-lab/euads">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
